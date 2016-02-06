@@ -1,0 +1,17 @@
+{
+  "name": "guide_to_ulyanovsk_client_app",
+  "version": "1.0.0",
+  "homepage": "https://github.com/ulnda/guide_to_ulyanovsk_client_app",
+  "authors": [
+    "d.nagibin <d.nagibin@fun-box.ru>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-bootstrap": "~0.13.4",
+    "angular-resource": "~1.4.7",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.5",
+    "lodash": "~3.10.1"
+  }
+}
