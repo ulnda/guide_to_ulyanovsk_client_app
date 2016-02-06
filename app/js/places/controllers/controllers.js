@@ -1,8 +1,10 @@
 class PlacesController {
-  constructor() {
-
+  constructor(Place) {
+    this.places = Place.query();
   }
 }
+
+PlacesController.$inject = ['Place'];
 
 const controllers = angular.module('app.places.controllers', []);
 

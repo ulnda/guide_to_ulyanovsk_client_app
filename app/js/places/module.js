@@ -4,18 +4,18 @@ module.config(['$stateProvider', '$locationProvider', ($stateProvider, $location
   $stateProvider.state('places', {
     abstract: true,
     url: '/places',
-    templateUrl: 'templates/places/main.html'
+    templateUrl: 'templates/places/main.html',
   }).state('places.all', {
     url: '',
-    controller: 'PlacesController',
+    controller: 'PlacesController as c',
     templateUrl: 'templates/places/index.html'
   }).state('places.new', {
     url: '/new',
-    controller: 'NewPlaceController',
+    controller: 'NewPlaceController as c',
     templateUrl: 'templates/places/new.html'
   }).state('places.edit', {
     url: '/:id/edit',
-    controller: 'EditPlaceController',
+    controller: 'EditPlaceController as c',
     templateUrl: 'templates/places/edit.html'
   });
 }])

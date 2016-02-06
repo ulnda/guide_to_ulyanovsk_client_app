@@ -1,7 +1,7 @@
 .tasks.index
   .col-xs-10.col-xs-offset-1
-    .with-tasks(ng-show="places.length")
+    .with-tasks(ng-show="c.places.length")
       h3.text-center Все достопримечательности
-    .without-tasks(ng-hide="places.length")
+    .without-tasks(ng-hide="c.places.length")
       h3.text-center На данный момент список достопримечательностей пуст. 
         a(ui-sref="places.new") Добавьте первую.
