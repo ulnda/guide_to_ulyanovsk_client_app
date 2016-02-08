@@ -1,7 +1,16 @@
-.tasks.index
+.places.index
   .col-xs-10.col-xs-offset-1
-    .with-tasks(ng-show="c.places.length")
+    .with-places(ng-show="c.places.length")
       h3.text-center Все достопримечательности
-    .without-tasks(ng-hide="c.places.length")
+      p.text-center
+        a.btn.btn-info(ui-sref="places.new") Добавить
+      table.table
+        tr(ng-repeat="p in c.places | orderBy: 'title'")
+          td.col-xs-6.title.vertical-align {{ p.title }}
+          td.col-xs-6
+            .pull-right
+              a.btn.btn-danger(ng-click="c.removePlace(p)") Удалить
+              a.btn.btn-primary(ui-sref="places.edit({ id : p.id })") Редактировать
+    .without-places(ng-hide="c.places.length")
       h3.text-center На данный момент список достопримечательностей пуст. 
         a(ui-sref="places.new") Добавьте первую.

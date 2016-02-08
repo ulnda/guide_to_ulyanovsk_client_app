@@ -63,7 +63,7 @@ gulp.task('js', () => {
 
 // Processing images task
 gulp.task('images', () => {
-  return gulp.src('app/img/**').pipe(gulp.dest(dist + 'img/'));
+  return gulp.src('app/images/**').pipe(gulp.dest(dist + 'images/'));
 });
 
 // Processing templates task

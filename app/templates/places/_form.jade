@@ -1,0 +1,18 @@
+.form-group(ng-class="{ 'has-error' : placeForm.title.$dirty && placeForm.title.$invalid }")
+  label.col-sm-3.control-label(for="name") Заголовок
+  .col-sm-9
+    input.form-control#title(type="text", name="title", ng-model="c.place.title", ng-required="true", placeholder="Заголовок")
+    span.error-message(ng-show="placeForm.title.$dirty && placeForm.title.$invalid") Обязательное поле
+.form-group(ng-class="{ 'has-error' : placeForm.description.$dirty && placeForm.description.$invalid }")
+  label.col-sm-3.control-label(for="description") Описание
+  .col-sm-9
+    textarea.form-control#description(cols="8", rows="6", name="description", ng-model="c.place.description", placeholder="Описание")
+    span.error-message(ng-show="placeForm.description.$dirty && placeForm.description.$invalid") Обязательное поле
+.form-group
+  label.col-sm-3.control-label Координаты
+  .col-sm-9
+    ui-gmap-google-map(center='c.options.map.center', zoom='c.options.map.zoom', events='c.options.events')
+      ui-gmap-marker(coords='c.place', options='c.options.point', icon="'icon'", idKey='c.options.point.id')
+.form-group
+  .col-sm-9.col-sm-offset-3
+    button.btn.btn-success(type="submit", ng-click="c.savePlace()") Сохранить
