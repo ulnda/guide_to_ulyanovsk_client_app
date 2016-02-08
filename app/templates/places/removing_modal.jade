@@ -1,0 +1,6 @@
+.modal-header
+  h3.modal-title.text-center Удаление достопримечательности
+.modal-body Вы действительно хотите удалить '{{ c.place.title }}'? 
+.modal-footer
+  button.btn.btn-primary(data-ng-click="c.removePlace()") ОК
+  button.btn.btn-warning(data-ng-click="c.cancel()") Отмена

@@ -7,5 +7,5 @@ module.factory('Place', ['$resource', 'API_PLACES_ENDPOINT', ($resource, API_PLA
   });
 }]);
 
-module.value('API_PLACES_ENDPOINT', 'http://localhost:8000/places')
+module.value('API_PLACES_ENDPOINT', 'http://localhost:8000/places/:id')
 

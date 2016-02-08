@@ -1,11 +1,43 @@
 class PlacesController {
-  constructor(Place) {
+  constructor(Place, $modal) {
     this.places = Place.query();
 
-    this.deps = { Place: Place };
+    this.deps = { Place: Place, $modal: $modal };
+  }
+
+  removePlace(place) {
+    this.deps.$modal.open({
+      templateUrl: 'templates/places/removing_modal.html',
+      controller: 'PlaceRemovingModalController as c',
+      size: 'sm',
+      resolve: {
+        place: () => {
+          return place;
+        }
+      }
+    });
   }
 }
-PlacesController.$inject = ['Place'];
+PlacesController.$inject = ['Place', '$modal'];
+
+class PlaceRemovingModalController {
+  constructor($modalInstance, $state, place) {
+    this.place = place;
+    this.deps = { $modalInstance: $modalInstance, $state: $state };
+  }
+
+  removePlace() {
+    this.place.$delete(() => {
+      this.deps.$modalInstance.dismiss('ok');
+      this.deps.$state.go(this.deps.$state.current, {}, { reload: true });
+    });
+  }
+
+  cancel() {
+    this.deps.$modalInstance.dismiss('cancel');
+  }
+}
+PlaceRemovingModalController.$inject = ['$modalInstance', '$state', 'place'];
 
 class NewPlaceController {
   constructor(Place, $scope, $state) {
@@ -48,3 +80,4 @@ const controllers = angular.module('app.places.controllers', []);
 
 controllers.controller('PlacesController', PlacesController);
 controllers.controller('NewPlaceController', NewPlaceController);
+controllers.controller('PlaceRemovingModalController', PlaceRemovingModalController);
