@@ -1,0 +1,16 @@
+.hotels.index
+  .col-xs-10.col-xs-offset-1
+    .with-hotels(ng-show="c.hotels.length")
+      h3.text-center Все гостиницы
+      p.text-center
+        a.btn.btn-info(ui-sref="hotels.new") Добавить
+      table.table
+        tr(ng-repeat="h in c.hotels | orderBy: 'title'")
+          td.col-xs-6.title.vertical-align {{ h.title }}
+          td.col-xs-6
+            .pull-right
+              a.btn.btn-danger(ng-click="c.removeHotel(h)") Удалить
+              a.btn.btn-primary(ui-sref="hotels.edit({ id : h.id })") Редактировать
+    .without-hotels(ng-hide="c.hotels.length")
+      h3.text-center На данный момент список отелей пуст. 
+        a(ui-sref="hotels.new") Добавьте первый.

@@ -1,0 +1,6 @@
+.modal-header
+  h3.modal-title.text-center Удаление отеля
+.modal-body Вы действительно хотите удалить '{{ c.hotel.title }}'? 
+.modal-footer
+  button.btn.btn-primary(data-ng-click="c.removeHotel()") ОК
+  button.btn.btn-warning(data-ng-click="c.cancel()") Отмена
