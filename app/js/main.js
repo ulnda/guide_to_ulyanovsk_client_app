@@ -1,4 +1,4 @@
-let module = angular.module('app', ['ui.bootstrap', 'ui.router', 'ngResource', 'app.places', 'app.hotels', 'uiGmapgoogle-maps']);
+let module = angular.module('app', ['ui.bootstrap', 'ui.router', 'ngResource', 'angular-img-cropper', 'uiGmapgoogle-maps', 'app.places', 'app.hotels', 'app.services']);
 
 module.config(['$locationProvider', '$urlRouterProvider', 'uiGmapGoogleMapApiProvider', ($locationProvider, 
   $urlRouterProvider, uiGmapGoogleMapApiProvider) => {

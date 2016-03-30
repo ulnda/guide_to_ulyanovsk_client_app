@@ -41,7 +41,8 @@ PlaceRemovingModalController.$inject = ['$modalInstance', '$state', 'place'];
 
 class NewPlaceController {
   constructor(Place, $scope, $state) {
-    this.place = new Place({latitude: 54.312267, longitude: 48.395505});
+    this.place = new Place({latitude: 54.312267, longitude: 48.395505, cropped_image: null});
+    
     this.options = { 
       map: {
         center: { 
@@ -64,6 +65,8 @@ class NewPlaceController {
         }
       }
     };
+    
+    this.sourceImage = null;
 
     this.deps = { Place: Place, $state: $state };
   }

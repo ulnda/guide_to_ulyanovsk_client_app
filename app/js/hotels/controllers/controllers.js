@@ -41,7 +41,8 @@ HotelRemovingModalController.$inject = ['$modalInstance', '$state', 'hotel'];
 
 class NewHotelController {
   constructor(Hotel, $scope, $state) {
-    this.hotel = new Hotel({latitude: 54.312267, longitude: 48.395505});
+    this.hotel = new Hotel({ latitude: 54.312267, longitude: 48.395505, cropped_image: null });
+    
     this.options = { 
       map: {
         center: { 
@@ -58,12 +59,14 @@ class NewHotelController {
       events: {
         click: (marker, eventName, args) => {
           var e = args[0];
-          this.place.latitude = e.latLng.lat();
-          this.place.longitude = e.latLng.lng();
+          this.hotel.latitude = e.latLng.lat();
+          this.hotel.longitude = e.latLng.lng();
           $scope.$apply();
         }
       }
     };
+
+    this.sourceImage = null;
 
     this.deps = { Hotel: Hotel, $state: $state };
   }

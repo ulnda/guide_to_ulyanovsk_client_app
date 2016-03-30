@@ -13,6 +13,29 @@
   .col-sm-9
     ui-gmap-google-map(center='c.options.map.center', zoom='c.options.map.zoom', events='c.options.events')
       ui-gmap-marker(coords='c.place', options='c.options.point', icon="'icon'", idKey='c.options.point.id')
+.form-group(ng-if="c.place.image")
+  label.col-sm-3.control-label Текущее изображение
+  .col-sm-9
+    img(ng-src="{{c.place.image}}")
+.form-group
+  label.col-sm-3.control-label Новое Изображение
+  .col-sm-9
+    input(type="file", img-cropper-fileread, image="c.sourceImage")
+    div
+      canvas(
+        image-cropper,
+        width         = "500",
+        height        = "300",
+        id            = "canvas",
+        image         = "c.sourceImage",
+        cropped-image = "c.place.cropped_image",
+        crop-width    = "200",
+        crop-height   = "200",
+        keep-aspect   = "true",
+        touch-radius  = "30",
+      )
+    div(ng-show="c.place.cropped_image")
+      img(ng-src="{{c.place.cropped_image}}")
 .form-group
   .col-sm-9.col-sm-offset-3
     button.btn.btn-success(type="submit", ng-click="c.savePlace()") Сохранить

@@ -4,6 +4,7 @@ const dist = 'dist/';
 // Plugins
 const gulp = require('gulp');
 const concat = require('gulp-concat');
+const envify = require('gulp-envify');
 
 const jshint = require('gulp-jshint');
 const uglify = require('gulp-uglify');
@@ -55,9 +56,10 @@ gulp.task('js', () => {
           .pipe(babel({
             presets: ['es2015']
           }))
+          .pipe(envify([process.env.NODE_ENV]))
           .pipe(jshint())
           .pipe(rev())
-          .pipe(uglify())
+          //.pipe(uglify())
           .pipe(gulp.dest(dist + 'js/')); 
 });
 
